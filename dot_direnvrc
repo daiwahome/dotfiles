@@ -1,0 +1,3 @@
+if [ $(pwd) != $HOME ]; then
+    source_up
+fi

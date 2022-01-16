@@ -1,0 +1,103 @@
+# Option
+set     refresh-mode        = auto
+set     line-graphics       = default
+
+# View
+set     main-view           = id date author commit-title:graph=yes,refs=yes
+
+# Color
+color   default     color252    color233
+color   cursor      color166    color234
+color   status      default     default
+color   title-focus color166    default
+color   title-blur  default     default
+color   main-head   color161    default
+
+# Key bind
+## disable
+bind    generic g               none
+bind    generic A               none
+bind    generic D               none
+bind    generic F               none
+bind    generic J               none
+bind    generic K               none
+bind    generic R               none
+bind    generic S               none
+bind    generic X               none
+bind    generic -               none
+bind    generic $               none
+bind    generic <Space>         none
+bind    generic <Insert>        none
+bind    generic <Delete>        none
+bind    generic <Home>          none
+bind    generic <End>           none
+bind    generic <ScrollBack>    none
+bind    generic <ScrollFwd>     none
+bind    generic <F5>            none
+bind    diff    I               none
+bind    main    C               none
+bind    main    G               none
+bind    main    F               none
+bind    refs    C               none
+bind    refs    !               none
+bind    stage   I               none
+bind    stash   A               none
+bind    stash   P               none
+bind    stash   !               none
+bind    status  C               none
+## vim like
+bind    generic <C-W><C-W>      view-next
+bind    generic <C-R>           refresh
+bind    generic gg              move-first-line
+bind    generic G               move-last-line
+bind    generic <C-F>           scroll-page-down
+bind    generic <C-B>           scroll-page-up
+bind    generic <PageDown>      scroll-page-down
+bind    generic <PageUp>        scroll-page-up
+bind    generic 0               scroll-first-col
+bind    generic ^               scroll-first-col
+## replace
+bind    generic <C-G>           view-grep
+bind    diff    <C-n>           :/^@@
+bind    diff    <C-p>           :?^@@
+bind    stage   <C-n>           :/^@@
+bind    stage   <C-p>           :?^@@
+bind    pager   <C-n>           :/^@@
+bind    pager   <C-p>           :?^@@
+bind    log     <C-n>           :/^commit
+bind    log     <C-p>           :?^commit
+## git
+bind    main    C               +sh -c "echo %(commit) | pbcopy ; echo \"Copy commit id: $(pbpaste)\""
+bind    main    D               !sh -c "git difftool --no-prompt --extcmd='icdiff --line-numbers' %(commit)^ %(commit) | less -R"
+bind    main    F               ?git fetch -p %(remote)
+bind    main    MG              ?git merge %(branch)
+bind    main    MN              ?git merge --no-ff %(branch)
+bind    main    MR              ?git merge %(remote)/%(branch)
+bind    main    PH              ?git push %(remote) %(repo:head)
+bind    main    PT              ?git push %(remote) --tags
+bind    main    RI              ?git rebase -i --keep-empty %(commit)
+bind    main    RH              ?@git reset --hard %(commit)
+bind    main    RM              ?@git reset --mixed %(commit)
+bind    main    RS              ?@git reset --soft %(commit)
+bind    main    T               @git tag "%(prompt New tag name: )" %(commit)
+bind    main    !               ?git revert %(commit)
+bind    refs    B               @git checkout -b "%(prompt New branch name: )" %(branch)
+bind    refs    C               @git checkout %(branch)
+bind    refs    R               @git branch -m %(branch) "%(prompt Rename branch: )"
+bind    refs    !               ?@git branch -D %(branch)
+bind    stash   A               ?@git stash apply %(stash)
+bind    stash   P               ?@git stash pop %(stash)
+bind    stash   !               ?@git stash drop %(stash)
+bind    status  CA              !git commit --amend --allow-empty
+bind    status  CC              !git commit
+bind    status  CE              !git commit --allow-empty
+bind    status  S               @git stash save "%(prompt Enter stash comment: )"
+bind    status  X               ?@git clean -dfx
+bind    status  RC              ?git rebase --continue
+bind    tree    !               ?@git rm %(file)
+## external commands
+bind    diff    I               @idea --line %(lineno) %(file)
+bind    stage   I               @idea --line %(lineno) %(file)
+bind    status  I               @idea %(file)
+bind    status  RM              ?@rm %(file)
+

@@ -1,0 +1,13 @@
+# common
+export LC_ALL=en_US.UTF-8
+export DIRENV_LOG_FORMAT=
+
+# git
+export GIT_AUTHOR_NAME="daiwahome"
+export GIT_AUTHOR_EMAIL="daiwahome0@gmail.com"
+export GIT_COMMITTER_NAME="daiwahome"
+export GIT_COMMITTER_EMAIL="daiwahome0@gmail.com"
+
+if [ -e .env ]; then
+  dotenv
+fi
