@@ -21,6 +21,9 @@ set -x MANPATH $HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnuman $MANPATH
 ## openssl
 set -x PATH $HOMEBREW_PREFIX/opt/openssl/bin $PATH
 
+## diff
+alias diff=colordiff
+
 ## ls
 alias ls='ls -hFG'
 alias la='ls -A'
@@ -45,11 +48,14 @@ alias embulk=$HOME/.embulk/bin/embulk
 ## gcloud
 source $HOME/google-cloud-sdk/path.fish.inc
 
-# lima
-set -x DOCKER_HOST unix://$HOME/.lima/docker/sock/docker.sock
+# terraform
+set -x TF_PLUGIN_CACHE_DIR $HOME/.terraform.d/plugin-cache
 
 # uconv
 set -x PATH $HOMEBREW_CELLAR/icu4c/69.1/bin $PATH
+
+# xcodes
+set -x XCODES_DIRECTORY $HOME/Applications
 
 # Run tmux
 if test -z "$TMUX"

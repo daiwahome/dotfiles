@@ -167,8 +167,7 @@ tags
 # End of https://www.toptal.com/developers/gitignore/api/direnv,dotenv,intellij,macos,vim
 
 # idea
-.idea/jpa-buddy.xml
-.idea/vcs.xml
+.idea
 
 # asdf
 .tool-versions
